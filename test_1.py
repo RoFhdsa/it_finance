@@ -1,7 +1,7 @@
 from selenium import webdriver
 from urllib.parse import urlparse
 #создаем драйвер для хрома
-driver = webdriver.Chrome()
+driver = webdriver.Chrome ()
 #имитируем, что мы попали на страницу
 url = "https://google.ru/?wmid=242&clickid=92c84d0f8c034531ace41792bd8bcc05&Mookid=zoSIq0bZhDXE"
 
@@ -22,6 +22,7 @@ def return_query_curl(url_txt):
         query_url_dict[key] = value
     # выводим значение
     return query_url_dict
+
 
 try:
     #Запускаем браузер

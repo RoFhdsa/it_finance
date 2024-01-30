@@ -8,7 +8,8 @@ from bs4 import BeautifulSoup
 driver = webdriver.Chrome()
 #записываем страницу с которой будем работать
 url = "https://ptable.com/?lang=ru"
-
+#объявим лист, который будет хранить перечень элементов
+elements_list =[]
 #создаем класс Сhemical_element
 class Сhemical_element ():
     def __init__(self, atomic, name, weight):
@@ -28,12 +29,17 @@ try:
         element = element.get_attribute('innerHTML')
         soup = BeautifulSoup(element, 'html.parser')
         # теперь можем передать в класс конкретные атрибуты, обращаясь к ним
-        Сhemical_element (atomic = soup.b.string,
+        сhemical_element = Сhemical_element (atomic = soup.b.string,
                           name = soup.em.string,
                           weight= soup.data.string)
+        elements_list.append(сhemical_element)
     pass
 except Exception as e:
     print(e)
 finally:
     driver.close()
     driver.quit()
+
+#принтуем данные
+for element in elements_list:
+    print(f"Порядковый номер в таблице: {element.atomic}, Название элемента: {element.name}, атомная масса элемента: {element.weight}")

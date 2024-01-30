@@ -4,14 +4,12 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 from bs4 import BeautifulSoup
 
-
-
-import time
 #создаем драйвер для хрома
 driver = webdriver.Chrome()
-#имитируем, что мы попали на страницу
+#записываем страницу с которой будем работать
 url = "https://ptable.com/?lang=ru"
-#url = "https://www.google.ru/?hl=ru"
+
+#создаем класс Сhemical_element
 class Сhemical_element ():
     def __init__(self, atomic, name, weight):
         self.atomic = atomic
@@ -21,7 +19,7 @@ class Сhemical_element ():
 try:
     #Запускаем браузер
     driver.get(url=url)
-    # Запускаем с режимо тайминга, дабы все отрибуты успели появится
+    # Запускаем с режимом тайминга, дабы все атрибуты успели появится
     elent_by = (WebDriverWait(driver, 2).
                 until(EC.visibility_of_all_elements_located(((By.CSS_SELECTOR, "ol[id*='Ptable']>li")))))
     # получаем перечень всех дочерних элементов которые хранят в себе имя элемента
@@ -33,10 +31,8 @@ try:
         Сhemical_element (atomic = soup.b.string,
                           name = soup.em.string,
                           weight= soup.data.string)
-        break
     pass
 except Exception as e:
-    print('ERROR')
     print(e)
 finally:
     driver.close()

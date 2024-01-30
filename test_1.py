@@ -8,13 +8,13 @@ url = "https://google.ru/?wmid=242&clickid=92c84d0f8c034531ace41792bd8bcc05&Mook
 def return_query_curl(url_txt):
     """
     :param url_txt: урл текстом
-    :return: слорваь расспарченный query
+    :return: слорваь расспарсенного query из урла
     """
-    # создаем словарь, в которой помещаем распарсенное значнеие квери параметра
+    # создаем словарь, в который помещаем распарсенное значение квери параметра
     query_url_dict = {}
     # из урла получаем квери параметр
     query_url = urlparse(url_now).query
-    # проходимс в цикле
+    # проходим в цикле
     for param in query_url.split('&'):
         # получаем ключ и значения
         key, value = param.split('=')
@@ -33,9 +33,8 @@ try:
     clickid = query_url_dict['clickid']
     print(clickid)
     pass
-except:
-    pass
+except Exception as e:
+    print(e)
 finally:
     driver.close()
     driver.quit()
-

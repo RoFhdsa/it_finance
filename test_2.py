@@ -42,4 +42,6 @@ finally:
 
 #принтуем данные
 for element in elements_list:
-    print(f"Порядковый номер в таблице: {element.atomic}, Название элемента: {element.name}, атомная масса элемента: {element.weight}")
+    print(f"Порядковый номер в таблице: {element.atomic}, "
+          f"Название элемента: {element.name}, "
+          f"атомная масса элемента: {element.weight}")
